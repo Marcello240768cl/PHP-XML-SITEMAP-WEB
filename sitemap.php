@@ -2,10 +2,10 @@
 
 
 
-	
+	$start_url =$_REQUEST['url_site']; 
 
 	
-	$start_url =$_POST['url_site'];       
+	      
 
 	
 	define ('CLI', true);
@@ -162,8 +162,8 @@ $str_begin="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" .
 	
 
 file_put_contents("sitemap.xml",$str_begin.$str_next_url_str."</urlset>\n");
-	echo "Done." . NL;
-	echo "sitemap.xml created." . NL;
+	//echo "Done." . NL;
+	//echo "sitemap.xml created." . NL;
 
 header("Content-Type: application/force-download; name=sitemap.xml");
 header("Content-type: text/xml"); 
@@ -172,12 +172,12 @@ header("Content-Disposition: attachment; filename=sitemap.xml");
 header("Expires: 0");
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
-readfile($file_entry);
+readfile("sitemap.xml");
 
          
          
 #Destroy file after downloading it
-unlink($file_entry);
+//unlink("sitemap.xml");
 
 #Exit page 
 exit();
